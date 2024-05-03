@@ -103,3 +103,4 @@ cache
 
 # tmp directories or files
 /model/
+/data
