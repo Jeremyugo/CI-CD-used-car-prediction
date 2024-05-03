@@ -81,7 +81,8 @@ target/
 .local
 
 # exclude data from source control by default
-/data/
+#/data/
+**/mlruns/**
 .csv
 .xlsx
 .xls
@@ -99,3 +100,6 @@ target/
 
 # Streamlit app nominatim search generates a cache folder
 cache
+
+# tmp directories or files
+/model/
