@@ -1,7 +1,7 @@
-name: run-CI-CD-pipeline
+# name: run-CI-CD-pipeline
 
-on:
-  pull_request:
-    branches: ["main"]
+# on:
+#   pull_request:
+#     branches: ["main"]
 
-jobs: null
+# jobs: null
