@@ -113,8 +113,8 @@ def model(X_train_scaled, y_train, signature):
     
     # defining ML models
     lin_reg = LinearRegression()
-    ridge_reg = Ridge(random_state=2)
-    rnd_reg = RandomForestRegressor(random_state=2)
+    ridge_reg = Ridge()
+    rnd_reg = RandomForestRegressor()
     svm_reg = SVR()
     knn_reg = KNeighborsRegressor()
     

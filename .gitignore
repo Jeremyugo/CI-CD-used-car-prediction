@@ -103,4 +103,5 @@ cache
 
 # tmp directories or files
 /model/
+/evaluation/
 /data

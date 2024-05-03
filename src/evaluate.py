@@ -97,6 +97,7 @@ def model_promotion(MODEL_NAME, X_test_scaled, y_test, pred, score):
     predictions["current model"] = pred
     
     perf_comparison_plot = pd.DataFrame(scores, index=["mse"]).plot(kind="bar", figsize=(15, 10))
+    perf_comparison_plot.figure.savefig("perf_comparison.png")
     perf_comparison_plot.figure.savefig("../evaluation/perf_comparison.png")
     
     mlflow.log_metric("deploy_flag", bool(deploy_flag))
