@@ -1,7 +1,0 @@
-# name: run-CI-CD-pipeline
-
-# on:
-#   push:
-#     branches: ["null"]
-
-# jobs: null
