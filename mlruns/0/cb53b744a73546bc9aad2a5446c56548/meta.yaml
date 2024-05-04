@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/mlops-car-prediction/mlops-car-prediction/mlruns/0/cb53b744a73546bc9aad2a5446c56548/artifacts
+end_time: 1714811447458
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cb53b744a73546bc9aad2a5446c56548
+run_name: capable-croc-652
+run_uuid: cb53b744a73546bc9aad2a5446c56548
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714811437313
+status: 3
+tags: []
+user_id: runner
