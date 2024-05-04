@@ -68,7 +68,7 @@ def model_promotion(MODEL_NAME, X_test_scaled, y_test, pred, score):
     for model_run in client.search_model_versions(f"name='{MODEL_NAME}'"):
         model_version = model_run.version
         
-        mdl = mlflow.sklearn.load_model(
+        mdl = mlflow.pyfunc.load_model(
             model_uri=f"models:/{MODEL_NAME}/{model_version}"
         )
         predictions[f"{MODEL_NAME}:{model_version}"] = np.expm1(mdl.predict(X_test_scaled))
