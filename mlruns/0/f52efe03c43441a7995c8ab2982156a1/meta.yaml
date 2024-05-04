@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/mlops-car-prediction/mlops-car-prediction/mlruns/0/f52efe03c43441a7995c8ab2982156a1/artifacts
+end_time: 1714850774255
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f52efe03c43441a7995c8ab2982156a1
+run_name: receptive-eel-33
+run_uuid: f52efe03c43441a7995c8ab2982156a1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714850763630
+status: 3
+tags: []
+user_id: runner
