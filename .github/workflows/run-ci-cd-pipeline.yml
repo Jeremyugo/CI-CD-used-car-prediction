@@ -19,7 +19,7 @@ jobs:
       - name: Setup-CML
         uses: iterative/setup-cml@v1
 
-      - name: Install-dependencies
+      - name: install-dependencies
         run: |
           pip install -r ./requirements.txt
 
