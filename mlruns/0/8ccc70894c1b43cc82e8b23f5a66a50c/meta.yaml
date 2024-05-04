@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/mlops-car-prediction/mlops-car-prediction/mlruns/0/8ccc70894c1b43cc82e8b23f5a66a50c/artifacts
+end_time: 1714811450170
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8ccc70894c1b43cc82e8b23f5a66a50c
+run_name: crawling-penguin-917
+run_uuid: 8ccc70894c1b43cc82e8b23f5a66a50c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1714811449318
+status: 3
+tags: []
+user_id: runner

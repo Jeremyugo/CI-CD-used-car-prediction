@@ -23,7 +23,7 @@ def main():
     test = pd.read_csv("data/prepared/test.csv")
     
     # processing test dataset
-    X_test_scaled, y_test = preprocess(test)
+    X_test, X_test_scaled, y_test = preprocess(test)
     
     # loading the model
     model = mlflow.sklearn.load_model("model/artifacts/model")
@@ -35,7 +35,7 @@ def main():
     score = mean_squared_error(y_test, pred)
     
     # model promotion
-    predictions, deploy_flag = model_promotion(MODEL_NAME, X_test_scaled, y_test, pred, score)
+    predictions, deploy_flag = model_promotion(MODEL_NAME, X_test, y_test, pred, score)
     
 
 
@@ -53,11 +53,11 @@ def preprocess(test):
     
     X_test_scaled = scaler.transform(X_test)
     
-    return X_test_scaled, y_test
+    return X_test, X_test_scaled, y_test
 
 
 
-def model_promotion(MODEL_NAME, X_test_scaled, y_test, pred, score):
+def model_promotion(MODEL_NAME, X_test, y_test, pred, score):
     '''compares current model to currently deployed model'''
     
     scores = {}
@@ -71,13 +71,17 @@ def model_promotion(MODEL_NAME, X_test_scaled, y_test, pred, score):
         mdl = mlflow.pyfunc.load_model(
             model_uri=f"models:/{MODEL_NAME}/{model_version}"
         )
-        predictions[f"{MODEL_NAME}:{model_version}"] = np.expm1(mdl.predict(X_test_scaled))
+        predictions[f"{MODEL_NAME}:{model_version}"] = mdl.predict(X_test)
         
         scores[f"{MODEL_NAME}:{model_version}"] = mean_squared_error(y_test, predictions[f"{MODEL_NAME}:{model_version}"])
         
     
     if scores:
+<<<<<<< HEAD
         if score <= max(list(scores.values)):
+=======
+        if score >= max(list(scores.values())):
+>>>>>>> b0570c382779332bdc7b81e2e0c56062f8ebc198
             deploy_flag = 1
             
         else:
