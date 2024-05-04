@@ -25,22 +25,22 @@ jobs:
 
       - name: prepare-data
         run: |
-          python3 ./src/python.py
+          python3 src/prep.py
 
       - name: train-model
         run: |
-          python3 ./src/evaluate.py
+          python3 src/evaluate.py
 
       - name: evaluate-model
         run: |
-          python3 ./src/python.py
+          python3 src/python.py
 
       - name: Write CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: cat metrics.json >> model_eval_report.md
-          echo "![performance comparison](./evaluation/perf_comparison.png)" >> model_eval_report.md
+          echo "![performance comparison](evaluation/perf_comparison.png)" >> model_eval_report.md
 
       - name: register-model
         run: |
-          python3 ./src/register.py
+          python3 src/register.py
