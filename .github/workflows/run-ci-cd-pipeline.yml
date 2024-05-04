@@ -39,7 +39,7 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: cat metrics.json >> model_eval_report.md
-          echo "![performance comparison](evaluation/perf_comparison.png)" >> model_eval_report.md
+          echo "![performance comparison](./evaluation/perf_comparison.png)" >> model_eval_report.md
 
       - name: register-model
         run: |
