@@ -38,7 +38,8 @@ jobs:
       - name: Write CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: cat evaluation/deploy_flag.txt >> model_eval_report.md
+        run: |
+          cat evaluation/deploy_flag.txt >> model_eval_report.md
           echo "![performance comparison](./evaluation/perf_comparison.png)" >> model_eval_report.md
           cml comment create model_eval_report.md
 
