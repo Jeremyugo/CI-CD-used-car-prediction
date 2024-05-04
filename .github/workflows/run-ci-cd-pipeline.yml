@@ -35,14 +35,6 @@ jobs:
         run: |
           python3 src/evaluate.py
 
-      - name: Write CML report
-        env:
-          REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
-        run: |
-          cat evaluation/deploy_flag.txt >> model_eval_report.md
-          echo "![performance comparison](./evaluation/perf_comparison.png)" >> model_eval_report.md
-          cml comment create model_eval_report.md
-
       - name: register-model
         run: |
           python3 src/register.py
