@@ -1,7 +1,7 @@
 name: run-CI-CD-pipeline
 
 on:
-  push:
+  pull_request:
     branches: ["main"]
 
 jobs:
