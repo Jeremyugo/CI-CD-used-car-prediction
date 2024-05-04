@@ -23,7 +23,7 @@ def main():
     ''' Read train dataset, preprocess dataset, and train model'''
     
     # read train data
-    train = pd.read_csv("../data/prepared/train.csv")
+    train = pd.read_csv("data/prepared/train.csv")
     
     # preprocess data
     X_train_scaled, y_train, signature = preprocess(train)
@@ -98,7 +98,7 @@ def preprocess(train):
     signature = infer_signature(X_train, y_train)
     
     # saving transformation pipeline
-    mlflow.sklearn.save_model(full_pipeline, path="../model/artifacts/scaler")
+    mlflow.sklearn.save_model(full_pipeline, path="model/artifacts/scaler")
 
     return X_train_scaled, y_train, signature
 
@@ -139,7 +139,7 @@ def model(X_train_scaled, y_train, signature):
     vot_reg.fit(X_train_scaled, y_train)
     
     # saving model
-    mlflow.sklearn.save_model(sk_model=vot_reg, path="../model/artifacts/model", signature=signature)
+    mlflow.sklearn.save_model(sk_model=vot_reg, path="model/artifacts/model", signature=signature)
     
     return vot_reg
 

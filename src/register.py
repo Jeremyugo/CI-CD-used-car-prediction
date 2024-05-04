@@ -3,21 +3,19 @@ Registers trained ML model if deploy flag is True
 """
 
 import json
-import os
-os.environ["AWS_ENDPOINT_URL"] = "https://swift-yeg.cloud.cybera.ca:8080"
 import shutil
 import numpy as np
 import pandas as pd
 import mlflow
 
 MODEL_NAME = "car-prediction"
-BASE_MODEL_PATH = "../model/artifacts/model"
-SCALER_PATH = "../model/artifacts/scaler"
+BASE_MODEL_PATH = "model/artifacts/model"
+SCALER_PATH = "model/artifacts/scaler"
 
 def main():
     '''Loads and registers model if deploy flag is True'''
     
-    with open("../evaluation/deploy_flag.txt", "rb") as infile:
+    with open("evaluation/deploy_flag.txt", "rb") as infile:
         deploy_flag = int(infile.read())
         
     
@@ -77,7 +75,7 @@ def main():
         # write model info
         print("Writing Json")
         dict = {"id": f"{MODEL_NAME}:{model_version}"}
-        with open("../evaluation/model_info.json", "w") as of:
+        with open("evaluation/model_info.json", "w") as of:
             json.dump(dict, fp=of)
     
     

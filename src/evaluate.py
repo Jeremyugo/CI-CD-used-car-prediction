@@ -20,13 +20,13 @@ def main():
     '''Read trained model and test dataset, evaluate model and save result'''
     
     # loading the test set
-    test = pd.read_csv("../data/prepared/test.csv")
+    test = pd.read_csv("data/prepared/test.csv")
     
     # processing test dataset
     X_test_scaled, y_test = preprocess(test)
     
     # loading the model
-    model = mlflow.sklearn.load_model("../model/artifacts/model")
+    model = mlflow.sklearn.load_model("model/artifacts/model")
     
     # making model predictions
     pred = np.expm1(model.predict(X_test_scaled))
@@ -49,7 +49,7 @@ def preprocess(test):
     X_test = test.drop(TARGET_COL, axis=1)
     y_test = test[TARGET_COL]
     
-    scaler = mlflow.sklearn.load_model("../model/artifacts/scaler")
+    scaler = mlflow.sklearn.load_model("model/artifacts/scaler")
     
     X_test_scaled = scaler.transform(X_test)
     
@@ -89,7 +89,7 @@ def model_promotion(MODEL_NAME, X_test_scaled, y_test, pred, score):
         
     print(f"Deploy flag: {deploy_flag}")
     
-    with open("../evaluation/deploy_flag.txt", 'w') as outfile:
+    with open("evaluation/deploy_flag.txt", 'w') as outfile:
         outfile.write(f"{int(deploy_flag)}")
         
         
@@ -98,7 +98,7 @@ def model_promotion(MODEL_NAME, X_test_scaled, y_test, pred, score):
     
     perf_comparison_plot = pd.DataFrame(scores, index=["mse"]).plot(kind="bar", figsize=(15, 10))
     perf_comparison_plot.figure.savefig("perf_comparison.png")
-    perf_comparison_plot.figure.savefig("../evaluation/perf_comparison.png")
+    perf_comparison_plot.figure.savefig("evaluation/perf_comparison.png")
     
     mlflow.log_metric("deploy_flag", bool(deploy_flag))
     mlflow.log_artifact("perf_comparison.png")
