@@ -15,7 +15,7 @@ def main():
     # ------------------------------------------ #
     
     # readind the raw dataset
-    data = pd.read_csv("../data/raw/car.csv")
+    data = pd.read_csv("data/raw/car.csv")
     
     # dropping irrelevant columns
     data = data.drop(COLS_TO_DROP, axis=1)
