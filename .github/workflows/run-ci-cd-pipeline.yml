@@ -29,11 +29,11 @@ jobs:
 
       - name: train-model
         run: |
-          python3 src/evaluate.py
+          python3 src/train.py
 
       - name: evaluate-model
         run: |
-          python3 src/python.py
+          python3 src/evaluate.py
 
       - name: Write CML report
         env:
