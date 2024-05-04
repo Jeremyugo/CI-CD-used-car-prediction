@@ -1,0 +1,40 @@
+name: run-CI-CD-pipeline
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  ci-cd-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup-Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Setup-CML
+        uses: iterative/setup-cml@v1
+
+      - name: Install-dependencies
+        run: |
+          pip install -r ./requirements.txt
+
+      - name: prepare-data
+        run: |
+          python3 src/prep.py
+
+      - name: train-model
+        run: |
+          python3 src/train.py
+
+      - name: evaluate-model
+        run: |
+          python3 src/evaluate.py
+
+      - name: register-model
+        run: |
+          python3 src/register.py

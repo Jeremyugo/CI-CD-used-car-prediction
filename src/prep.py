@@ -15,7 +15,7 @@ def main():
     # ------------------------------------------ #
     
     # readind the raw dataset
-    data = pd.read_csv("../data/raw/car.csv")
+    data = pd.read_csv("data/raw/car.csv")
     
     # dropping irrelevant columns
     data = data.drop(COLS_TO_DROP, axis=1)
@@ -31,8 +31,8 @@ def main():
     train, test = train_test_split(data, test_size=0.2, random_state=42)
     
     # saving train and test datasets
-    train.to_csv("../data/prepared/train.csv", index=False)
-    test.to_csv("../data/prepared/test.csv", index=False)
+    train.to_csv("data/prepared/train.csv", index=False)
+    test.to_csv("data/prepared/test.csv", index=False)
     
     
     

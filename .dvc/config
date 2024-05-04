@@ -1,0 +1,5 @@
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = s3://carprediction/data
+    endpointurl = https://swift-yeg.cloud.cybera.ca:8080
