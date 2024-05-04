@@ -35,7 +35,7 @@ def main():
     score = mean_squared_error(y_test, pred)
     
     # model promotion
-    predictions, deploy_flag = model_promotion(MODEL_NAME, X_test_scaled, y_test, pred, score)
+    predictions, deploy_flag = model_promotion(MODEL_NAME, X_test, y_test, pred, score)
     
 
 
