@@ -23,7 +23,7 @@ def main():
     test = pd.read_csv("data/prepared/test.csv")
     
     # processing test dataset
-    X_test_scaled, y_test = preprocess(test)
+    X_test, X_test_scaled, y_test = preprocess(test)
     
     # loading the model
     model = mlflow.sklearn.load_model("model/artifacts/model")
@@ -53,7 +53,7 @@ def preprocess(test):
     
     X_test_scaled = scaler.transform(X_test)
     
-    return X_test_scaled, y_test
+    return X_test, X_test_scaled, y_test
 
 
 
