@@ -57,7 +57,7 @@ def preprocess(test):
 
 
 
-def model_promotion(MODEL_NAME, X_test_scaled, y_test, pred, score):
+def model_promotion(MODEL_NAME, X_test, y_test, pred, score):
     '''compares current model to currently deployed model'''
     
     scores = {}
@@ -71,7 +71,7 @@ def model_promotion(MODEL_NAME, X_test_scaled, y_test, pred, score):
         mdl = mlflow.pyfunc.load_model(
             model_uri=f"models:/{MODEL_NAME}/{model_version}"
         )
-        predictions[f"{MODEL_NAME}:{model_version}"] = np.expm1(mdl.predict(X_test_scaled))
+        predictions[f"{MODEL_NAME}:{model_version}"] = mdl.predict(X_test)
         
         scores[f"{MODEL_NAME}:{model_version}"] = mean_squared_error(y_test, predictions[f"{MODEL_NAME}:{model_version}"])
         
