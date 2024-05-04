@@ -3,6 +3,8 @@ Registers trained ML model if deploy flag is True
 """
 
 import json
+import os
+os.environ["AWS_ENDPOINT_URL"] = "https://swift-yeg.cloud.cybera.ca:8080"
 import shutil
 import numpy as np
 import pandas as pd
@@ -88,6 +90,7 @@ def main():
     
 
 if __name__ == "__main__":
+    
     mlflow.start_run()
     
     main()
