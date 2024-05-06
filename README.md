@@ -27,6 +27,10 @@ pip install -r requirements.txt
 
 5. proceed with experimentation
 
+## CI-CD Workflow
+![Picture1](https://github.com/Jeremyugo/mlops-car-prediction/assets/36512525/80e017fe-f177-4120-a99b-259cea4c41ee)
+
+
 ## Model Endpoint
 
 Current deployed model can be accessed through the URL below

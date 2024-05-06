@@ -77,11 +77,7 @@ def model_promotion(MODEL_NAME, X_test, y_test, pred, score):
         
     
     if scores:
-<<<<<<< HEAD
-        if score <= max(list(scores.values)):
-=======
-        if score >= max(list(scores.values())):
->>>>>>> b0570c382779332bdc7b81e2e0c56062f8ebc198
+        if score <= max(list(scores.values())):
             deploy_flag = 1
             
         else:
