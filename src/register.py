@@ -29,8 +29,8 @@ def main():
         scaler = mlflow.sklearn.load_model(SCALER_PATH)
         
         # log models
-        mlflow.sklearn.log_model(base_model, "base_model")
-        mlflow.sklearn.log_model(scaler, "scaler")
+        mlflow.sklearn.log_model(base_model, "model/base_model")
+        mlflow.sklearn.log_model(scaler, "model/scaler")
         
         # register logged model
         run_id = mlflow.active_run().info.run_id
@@ -64,7 +64,7 @@ def main():
     
     
         # saving the custom model
-        mlflow.pyfunc.log_model(MODEL_NAME, python_model=CustomPredict())
+        mlflow.pyfunc.log_model(artifact_path="model/"+MODEL_NAME, python_model=CustomPredict())
         
         # registering models
         mlflow_model = mlflow.register_model(scaler_uri, "scaler")
