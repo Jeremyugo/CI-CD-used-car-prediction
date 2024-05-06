@@ -1,0 +1,15 @@
+artifact_path: car-prediction
+flavors:
+  python_function:
+    cloudpickle_version: 3.0.0
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.9
+mlflow_version: 2.12.1
+model_size_bytes: 6822
+model_uuid: c1f7bb05dcf84397adf45a68c7a6abf5
+run_id: ba1ee823225c4630a4fdcd62620d0835
+utc_time_created: '2024-05-06 21:03:57.322356'

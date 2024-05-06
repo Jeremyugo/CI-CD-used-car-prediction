@@ -3,11 +3,13 @@ Registers trained ML model if deploy flag is True
 """
 
 import json
+import os
 import shutil
 import numpy as np
 import pandas as pd
 import mlflow
 
+HOME_DIR = "/home/ubuntu/ds/mlops-car-prediction/"
 MODEL_NAME = "car-prediction"
 BASE_MODEL_PATH = "model/artifacts/model"
 SCALER_PATH = "model/artifacts/scaler"
@@ -15,7 +17,7 @@ SCALER_PATH = "model/artifacts/scaler"
 def main():
     '''Loads and registers model if deploy flag is True'''
     
-    with open("evaluation/deploy_flag.txt", "rb") as infile:
+    with open(HOME_DIR+"evaluation/deploy_flag.txt", "rb") as infile:
         deploy_flag = int(infile.read())
         
     
@@ -24,9 +26,9 @@ def main():
     if deploy_flag==1:
         print("Registering ", MODEL_NAME)
         
-        base_model = mlflow.sklearn.load_model(BASE_MODEL_PATH)
+        base_model = mlflow.sklearn.load_model(os.path.join(HOME_DIR, BASE_MODEL_PATH))
         
-        scaler = mlflow.sklearn.load_model(SCALER_PATH)
+        scaler = mlflow.sklearn.load_model(os.path.join(HOME_DIR, SCALER_PATH))
         
         # log models
         mlflow.sklearn.log_model(base_model, "base_model")
@@ -64,7 +66,7 @@ def main():
     
     
         # saving the custom model
-        mlflow.pyfunc.log_model(MODEL_NAME, python_model=CustomPredict())
+        mlflow.pyfunc.log_model(artifact_path=MODEL_NAME, python_model=CustomPredict())
         
         # registering models
         mlflow_model = mlflow.register_model(scaler_uri, "scaler")
@@ -75,7 +77,7 @@ def main():
         # write model info
         print("Writing Json")
         dict = {"id": f"{MODEL_NAME}:{model_version}"}
-        with open("evaluation/model_info.json", "w") as of:
+        with open(HOME_DIR+"evaluation/model_info.json", "w") as of:
             json.dump(dict, fp=of)
     
     
@@ -83,8 +85,8 @@ def main():
         print("Model will not be registered!")
         
     # removing temp model sub-directories
-    shutil.rmtree(BASE_MODEL_PATH)
-    shutil.rmtree(SCALER_PATH)
+    shutil.rmtree(os.path.join(HOME_DIR, BASE_MODEL_PATH))
+    shutil.rmtree(os.path.join(HOME_DIR, SCALER_PATH))
     
 
 if __name__ == "__main__":

@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ubuntu/ds/mlops-car-prediction/mlruns/0/ba1ee823225c4630a4fdcd62620d0835/artifacts
+end_time: 1715029440266
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ba1ee823225c4630a4fdcd62620d0835
+run_name: unequaled-asp-867
+run_uuid: ba1ee823225c4630a4fdcd62620d0835
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1715029428805
+status: 3
+tags: []
+user_id: root
