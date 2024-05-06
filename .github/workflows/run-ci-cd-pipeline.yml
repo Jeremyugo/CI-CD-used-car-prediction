@@ -31,7 +31,6 @@ jobs:
       - name: evaluate-model
         run: |
           python3 src/evaluate.py
-        working-directory: ./src
 
       - name: register-model
         run: |
