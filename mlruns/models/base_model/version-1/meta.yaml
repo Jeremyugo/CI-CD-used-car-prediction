@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1715029440237
+current_stage: None
+description: null
+last_updated_timestamp: 1715029440237
+name: base_model
+run_id: ba1ee823225c4630a4fdcd62620d0835
+run_link: null
+source: file:///home/ubuntu/ds/mlops-car-prediction/mlruns/0/ba1ee823225c4630a4fdcd62620d0835/artifacts/base_model
+status: READY
+status_message: null
+storage_location: file:///home/ubuntu/ds/mlops-car-prediction/mlruns/0/ba1ee823225c4630a4fdcd62620d0835/artifacts/base_model
+user_id: null
+version: 1

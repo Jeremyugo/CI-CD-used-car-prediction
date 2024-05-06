@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+HOME_DIR = "/home/ubuntu/ds/mlops-car-prediction/"
 COLS_TO_DROP = ["carID", "mileage"]
 
 def main():
@@ -15,7 +16,7 @@ def main():
     # ------------------------------------------ #
     
     # readind the raw dataset
-    data = pd.read_csv("data/raw/car.csv")
+    data = pd.read_csv(HOME_DIR+"data/raw/car.csv")
     
     # dropping irrelevant columns
     data = data.drop(COLS_TO_DROP, axis=1)
@@ -31,8 +32,8 @@ def main():
     train, test = train_test_split(data, test_size=0.2, random_state=42)
     
     # saving train and test datasets
-    train.to_csv("data/prepared/train.csv", index=False)
-    test.to_csv("data/prepared/test.csv", index=False)
+    train.to_csv(HOME_DIR+"data/prepared/train.csv", index=False)
+    test.to_csv(HOME_DIR+"data/prepared/test.csv", index=False)
     
     
     

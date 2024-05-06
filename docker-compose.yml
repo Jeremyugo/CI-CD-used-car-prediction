@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  python:
+    user: root
+    build:
+      context: ./docker/python
+      dockerfile: Dockerfile
+    ports:
+      - 8501:8501
+    volumes:
+      - ./:/home/ubuntu/ds/mlops-car-prediction/
+    environment:
+      - MLFLOW_TRACKING_URI=file:/home/ubuntu/ds/mlops-car-prediction/mlruns
+    command: >
+      bash -c "rm -rf model/artifacts/model && rm -rf model/artifacts/scaler && python3 src/prep.py && python3 src/train.py && python3 src/evaluate.py && python3 src/register.py"

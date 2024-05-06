@@ -1,4 +1,4 @@
-name: run-CI-CD-pipeline
+name: run-CI-CD-pipeline-docker-container
 
 on:
   pull_request:
@@ -11,48 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup-Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.9
-
-      - name: install-dependencies
+      - name: Build and run Docker compose
         run: |
-          pip install -r ./requirements.txt
-
-      - name: prepare-data
-        run: |
-          python3 src/prep.py
-
-      - name: train-model
-        run: |
-          python3 src/train.py
-
-      - name: evaluate-model
-        run: |
-          python3 src/evaluate.py
-
-      - name: register-model
-        run: |
-          python3 src/register.py
-
-      - name: Commit files
-        id: commit
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
-          git add --all
-          if [-z "$(git status --porcelain)"]; then
-              echo "::set-output name=push::false"
-          else
-              git commit -m "Add changes" -a
-              echo "::set-output name=push::true"
-          fi
-        shell: bash
-      - name: Push changes
-        if: steps.commit.outputs.push == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}
-          force: true
+          docker-compose up -d
