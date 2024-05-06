@@ -1,31 +1,20 @@
 # CI-CD-used-car-prediction
 
-This repository contains code for building a simple fully automated Continuos Integration & Continous Delivery Pipeline locally.
+This repository contains code for building a simple fully automated Continuous-Integration & Continous-Delivery Pipeline locally.
 
 ## Project Oragnization
 
 This project is organized into the following directories:
 
+- `app`: Streamlit app
 - `data`: contains dataset used for training and evaluating ML model
+- `docker/python`: dockerfile
 - `evaluation`: contains model evaluation information
-- `model`: temporary storage location for current trained ML model
+- `mlruns`: mlflow runs
+- `model/artifacts`: temporary storage location for current trained ML model during workflow
 - `notebooks`: contains experimentation notebook
 - `src`: python executables
 
-# Getting Started
-
-To implement reproduce this repo
-
-1. create an ec2 ubuntu instance or WSL vm
-2. git clone the repo
-3. cd in cloned repo
-4. run the following in the ubuntu terminal
-
-```shell
-pip install -r requirements.txt
-```
-
-5. proceed with experimentation
 
 ## CI-CD Workflow
 ![Picture1](https://github.com/Jeremyugo/mlops-car-prediction/assets/36512525/80e017fe-f177-4120-a99b-259cea4c41ee)
