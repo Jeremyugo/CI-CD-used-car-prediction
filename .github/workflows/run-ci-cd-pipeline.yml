@@ -16,10 +16,7 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Setup-CML
-        uses: iterative/setup-cml@v1
-
-      - name: install dependencies
+      - name: install-dependencies
         run: |
           pip install -r ./requirements.txt
 
@@ -34,6 +31,7 @@ jobs:
       - name: evaluate-model
         run: |
           python3 src/evaluate.py
+        working-directory: ./src
 
       - name: register-model
         run: |
